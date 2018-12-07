@@ -14,7 +14,7 @@ apply plugin: org.jetbrains.gradle.ext.IdeaExtPlugin
 task('testIdea') {
     doLast {
         println('I\'m being run!')
-        file("${buildDir}/testIdea.log") << 'Task was run' 
+        file("${projectDir}/testIdea.log") << 'Task was run' 
     }
 }
 
