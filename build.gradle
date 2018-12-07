@@ -1,0 +1,23 @@
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath 'gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext:0.2'
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: org.jetbrains.gradle.ext.IdeaExtPlugin
+
+task('testIdea') {
+    doLast {
+        println('I\'m being run!')
+    }
+}
+
+idea.project.settings.taskTriggers {
+    println("Being added: ${tasks.getByName('testIdea')}")
+    afterSync tasks.getByName('testIdea')
+}
